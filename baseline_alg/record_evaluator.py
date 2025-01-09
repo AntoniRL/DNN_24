@@ -100,3 +100,4 @@ if __name__ == '__main__':
     record_eval = RecordEvaluator('./')
     signal_reader = SignalReader('./val_db/6.csv')
     record_eval.evaluate(signal_reader)
+    
