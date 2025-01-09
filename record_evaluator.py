@@ -330,21 +330,22 @@ class RecordEvaluator:
         # for record_name in records:
         print("Record path:", record_path)
         print("Record name: ", record_name)
-        # features = process_ecg_record(record_path, record_name)
+        features = process_ecg_record(record_path, record_name)
 
-        # df = pd.DataFrame(features)
-        # file_name = self.intervals_directory_path + "/" + record_name + "_features.csv"
-        # # Save the DataFrame to a CSV file
-        # df.to_csv(file_name, index=False)
+        df = pd.DataFrame(features)
+        file_name = self.intervals_directory_path + "/" + record_name + "_features.csv"
+        # Save the DataFrame to a CSV file
+        df.to_csv(file_name, index=False)
         
-        # output_file = self.preprocessed_data_directory_path + "/afdb_data.csv"
-        # load_and_combine_data(self.intervals_directory_path, output_file)
+        output_file = self.preprocessed_data_directory_path + "/afdb_data.csv"
+        load_and_combine_data(self.intervals_directory_path, output_file)
 
         # Predictions
-        df, actual_afib_annotations = load_data('D:/05_Studia/Semestr_9_mgr/dnn/DNN_styczen/data/preprocessed_data/afdb_data.csv')
+        df, actual_afib_annotations = load_data(output_file)
         df, features, features_sample = preprocess_data(df)
         predictions = predict(self._model, features)
 
+        # Postprocess
         expanded_predictions = []
         for pred in predictions:
             expanded_predictions.extend([pred] * 10)
