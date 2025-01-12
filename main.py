@@ -5,7 +5,7 @@ import time
 from signal_reader import SignalReader
 from record_evaluator import RecordEvaluator
 
-db_dir_in_docker = '/ecg_db'
+db_dir_in_docker = 'D:/05_Studia/Semestr_9_mgr/dnn/BazyDanych/mit-bih-atrial-fibrillation-database-1.0.0/files'
 
 def main(save_result_dir, records):
     print(f'no of records: {len(records)}')
